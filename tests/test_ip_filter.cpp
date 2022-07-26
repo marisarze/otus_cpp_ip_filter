@@ -4,7 +4,7 @@
 
 TEST(TestSimple, TestGetIpPool){
 
-    std::stringstream input( 
+    std::istringstream input( 
     "1.1.1.1\t234\t45\n"
     "1.2.1.1\t1.1.1.1\t45\n"
     "1.1.3.1\t234\t1.1.1.1\n"
