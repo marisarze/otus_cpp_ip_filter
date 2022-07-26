@@ -38,11 +38,11 @@ std::vector<std::vector<std::string>> get_ip_pool(std::istream &input)
 
 
 void show_ip_pool(std::vector <std::vector <std::string>> &ip_pool){
-    for(auto ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+    for(auto ip = ip_pool.begin(); ip != ip_pool.end(); ++ip)
     {
-        for(auto ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
+        for(auto ip_part = ip->begin(); ip_part != ip->end(); ++ip_part)
         {
-            if (ip_part != ip->cbegin())
+            if (ip_part != ip->begin())
             {
                 std::cout << ".";
             }
