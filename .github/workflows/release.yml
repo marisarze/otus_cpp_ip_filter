@@ -19,6 +19,7 @@ jobs:
       - run: cmake --build . --target test_ip_filter
       - run: ls -aq
       - run: ls -aq tests
+      - run: cat tests/ip_filter.tsv
       - run: cat tests/ip_filter.tsv | ip_filter_cli
       - run: tests/test_ip_filter
       - run: cpack
