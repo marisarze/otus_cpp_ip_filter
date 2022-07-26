@@ -6,7 +6,7 @@
 
 TEST(TestSimple, TestGetIpPool){
 
-    std::istringstream input(
+    std::istringstream data(
     "1.1.1.1\t234\t45\n"
     "1.2.1.1\t1.1.1.1\t45\n"
     "1.1.3.1\t234\t1.1.1.1\n"
@@ -15,7 +15,8 @@ TEST(TestSimple, TestGetIpPool){
     "2.2.2.2\t234\t45\n"
     "9009\t234\t45\n"
     "1.2.3.4\t234\t.\n");
-    auto result = get_ip_pool(input);
+    std::istream& is(data);
+    auto result = get_ip_pool(is);
     decltype(result) expected = {
         {"1", "1", "1", "1"},
         {"1", "2", "1", "1"},
