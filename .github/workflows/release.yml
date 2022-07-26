@@ -53,4 +53,4 @@ jobs:
       - run: cmake --build . --target ip_filter_cli
       - run: dir
       - run: dir tests
-      - run: start tests/test_ip_filter.exe
+      - run: start tests/Debug/test_ip_filter.exe
