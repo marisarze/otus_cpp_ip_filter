@@ -72,17 +72,15 @@ std::vector <std::vector <std::string>> reverse_sort(std::vector <std::vector <s
 }
 
 
-std::vector <std::vector <std::string>> sort_by_condition(std::vector <std::vector <std::string>> ip_pool, bool condition_func(std::vector<std::vector <std::string>>::iterator)){
+std::vector <std::vector <std::string>> filter_by_condition(std::vector <std::vector <std::string>> ip_pool, bool condition_func(std::vector<std::vector <std::string>>::iterator)){
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
-    auto insert_pos = first;
+    std::vector <std::vector <std::string>> result; 
     for(auto ip = first; ip != last; ++ip)
     {
         if (condition_func(ip)){
-            auto value = *ip;
-            ip_pool.erase(ip);
-            ip_pool.insert(insert_pos++, value);
+            result.push_back(*ip);
         }
     }
-    return ip_pool;
+    return result;
 }
