@@ -29,6 +29,7 @@ TEST(TestSimple, TestGetIpPool){
         {"1", "2", "3", "4"}
     };
     std::cin.rdbuf(backup);
+    show_ip_pool(result);
     EXPECT_EQ(result, expected);
 }
 
