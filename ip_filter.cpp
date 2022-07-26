@@ -3,9 +3,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "ip_filter.h"
 
-
-auto split(const std::string &str, char d)
+std::vector<std::string> split(const std::string &str, char d)
 {
     std::vector<std::string> r;
     std::string::size_type start = 0;
@@ -21,7 +21,7 @@ auto split(const std::string &str, char d)
 }
 
 
-auto get_ip_pool(std::istream &input)
+std::vector<std::vector<std::string>> get_ip_pool(std::istream &input)
 {
     std::vector<std::vector<std::string>> ip_pool;
     std::string line;

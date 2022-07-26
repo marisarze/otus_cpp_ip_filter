@@ -1,19 +1,20 @@
-#include "ip_filter.cpp"
+#include "ip_filter.h"
+#include <iostream>
 
-int main()
+int main(int argc, char const *argv[])
 {
     try
     {
         
         auto ip_pool = get_ip_pool(std::cin);
         // TODO reverse lexicographically sort
-        show_ip_pool(ip_pool);
-        std::cout << "---------------------------------" << std::endl;
-        reverse_sort_pool(ip_pool);
-        show_ip_pool(ip_pool);
-        std::cout << "---------------------------------" << std::endl;
-        std::string dummy;
-        std::getline(std::cin, dummy);
+        // show_ip_pool(ip_pool);
+        // std::cout << "---------------------------------" << std::endl;
+        // reverse_sort_pool(ip_pool);
+        // show_ip_pool(ip_pool);
+        // std::cout << "---------------------------------" << std::endl;
+        // std::string dummy;
+        // std::cin.get();
         
         
 
