@@ -6,11 +6,9 @@ int main(int argc, char const *argv[])
     try
     {
         
-        std::string lineInput;
-        while (std::getline(std::cin,lineInput)) {
-            std::cout << lineInput;  
-}
-        // auto ip_pool = get_ip_pool(std::cin);
+        
+        auto ip_pool = get_ip_pool(std::cin);
+        show_ip_pool(ip_pool);
         // TODO reverse lexicographically sort
         // show_ip_pool(ip_pool);
         // std::cout << "---------------------------------" << std::endl;
