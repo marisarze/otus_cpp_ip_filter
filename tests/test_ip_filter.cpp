@@ -15,8 +15,9 @@ TEST(TestSimple, TestGetIpPool){
     "2.2.2.2\t234\t45\n"
     "9009\t234\t45\n"
     "1.2.3.4\t234\t.\n");
-    std::istream& is(data);
-    auto result = get_ip_pool(is);
+    auto backup = std::cin.rdbuf();
+    std::cin.rdbuf(data.rdbuf());
+    auto result = get_ip_pool(std::cin);
     decltype(result) expected = {
         {"1", "1", "1", "1"},
         {"1", "2", "1", "1"},
@@ -27,6 +28,7 @@ TEST(TestSimple, TestGetIpPool){
         {{"9009"}},
         {"1", "2", "3", "4"}
     };
+    std::cin.rdbuf(backup);
     EXPECT_EQ(result, expected);
 }
 
