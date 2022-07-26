@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include "ip_filter.h"
 
 std::vector<std::string> split(const std::string &str, char d)
@@ -53,7 +54,7 @@ void show_ip_pool(std::vector <std::vector <std::string>> &ip_pool){
 }
 
 
-void reverse_sort_pool(std::vector <std::vector <std::string>> &ip_pool){
+std::vector <std::vector <std::string>> reverse_sort(std::vector <std::vector <std::string>> ip_pool){
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
     for (int i=3;i>=0;i--){
@@ -67,4 +68,21 @@ void reverse_sort_pool(std::vector <std::vector <std::string>> &ip_pool){
             }
         }
     }
+    return ip_pool;
+}
+
+
+std::vector <std::vector <std::string>> sort_by_condition(std::vector <std::vector <std::string>> ip_pool, bool condition_func(std::vector<std::vector <std::string>>::iterator)){
+    auto first = ip_pool.begin();
+    auto last =  ip_pool.end();
+    auto insert_pos = first;
+    for(auto ip = first; ip != last; ++ip)
+    {
+        if (condition_func(ip)){
+            auto value = *ip;
+            ip_pool.erase(ip);
+            ip_pool.insert(insert_pos++, value);
+        }
+    }
+    return ip_pool;
 }
