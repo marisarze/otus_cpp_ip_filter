@@ -10,13 +10,10 @@ int main(int argc, char const *argv[])
         auto ip_pool = get_ip_pool(std::cin);
         show_ip_pool(ip_pool);
         // TODO reverse lexicographically sort
-        // show_ip_pool(ip_pool);
-        // std::cout << "---------------------------------" << std::endl;
-        // reverse_sort_pool(ip_pool);
-        // show_ip_pool(ip_pool);
-        // std::cout << "---------------------------------" << std::endl;
-        // std::string dummy;
-        // std::cin.get();
+        std::cout << "---------------------------------" << std::endl;
+        reverse_sort_pool(ip_pool);
+        show_ip_pool(ip_pool);
+
         
         
 
