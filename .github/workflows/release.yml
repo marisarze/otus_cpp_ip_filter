@@ -18,7 +18,8 @@ jobs:
       - run: cmake --build . --target ip_filter_cli 
       - run: cmake --build . --target test_ip_filter
       - run: ls -aq
-      - run: cat tests/ip_filter.tsv | ./ip_filter
+      - run: ls -aq tests
+      - run: cat tests/ip_filter.tsv | ip_filter
       - run: tests/test_ip_filter
       - run: cpack
       - run: dpkg -c ip_filter-0.0.${{ github.run_number }}-Linux.deb
