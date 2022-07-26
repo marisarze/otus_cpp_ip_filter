@@ -13,14 +13,14 @@ int main(int argc, char const *argv[])
         // std::cout << "---------------------------------" << std::endl;
         auto new_pool = reverse_sort(ip_pool);
         // show_ip_pool(new_pool);
-        std::cout << "---------------------------------" << std::endl;
-        auto condition_func = [](std::vector<std::vector <std::string>>::iterator it)-> bool {return (*it)[0]=="1";};
-        new_pool = sort_by_condition(ip_pool, condition_func);
-        show_ip_pool(new_pool);
         // std::cout << "---------------------------------" << std::endl;
-        // auto condition_func = [](std::vector<std::vector <std::string>>::iterator it)-> bool {return (*it)[0]=="46" && (*it)[1]=="70";};
+        // auto condition_func = [](std::vector<std::vector <std::string>>::iterator it)-> bool {return (*it)[0]=="1";};
         // new_pool = sort_by_condition(ip_pool, condition_func);
         // show_ip_pool(new_pool);
+        std::cout << "---------------------------------" << std::endl;
+        auto condition_func = [](std::vector<std::vector <std::string>>::iterator it)-> bool {return (*it)[0]=="46" && (*it)[1]=="70";};
+        new_pool = sort_by_condition(ip_pool, condition_func);
+        show_ip_pool(new_pool);
         // std::cout << "---------------------------------" << std::endl;
         // auto condition_func = [](std::vector<std::vector <std::string>>::iterator it)-> bool {
         //     for (int i=0;i<4;i++){
