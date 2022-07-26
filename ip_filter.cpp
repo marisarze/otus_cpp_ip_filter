@@ -61,7 +61,7 @@ void reverse_sort_pool(std::vector <std::vector <std::string>> &ip_pool){
         {
             for(auto ip2 = first; ip2 != last-(ip1-first)-1; ++ip2)
             {
-                if (std::stoi((*ip2)[i]) <= std::stoi((*(ip2+1))[i])){
+                if (std::stoi((*ip2)[i]) < std::stoi((*(ip2+1))[i])){
                     std::iter_swap(ip2, ip2+1);
                 }
             }
