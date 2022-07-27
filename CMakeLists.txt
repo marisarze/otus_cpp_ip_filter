@@ -18,15 +18,15 @@ target_include_directories(ip_filter_cli
     PRIVATE "${CMAKE_CURRENT_BINARY_DIR}"
 )
 add_subdirectory(tests)
-# if (MSVC)
-#     target_compile_options(ip_filter_cli PRIVATE
-#         /W4
-#     )
-# else ()
-#     target_compile_options(ip_filter_cli PRIVATE
-#         -Wall -Wextra -pedantic -Werror
-#     )
-# endif()
+if (MSVC)
+    target_compile_options(ip_filter_cli PRIVATE
+        /W4
+    )
+else ()
+    target_compile_options(ip_filter_cli PRIVATE
+        -Wall -Wextra -pedantic -Werror
+    )
+endif()
 
 
 
