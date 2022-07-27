@@ -19,7 +19,6 @@ if (NOT (TARGET gtest AND TARGET gtest_main))
 endif()
 
 add_executable(test_ip_filter test_ip_filter.cpp ../ip_filter.cpp)
-#target_include_directories(test_ip_filter PRIVATE ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${gtest_SOURCE_DIR}/include ${COMMON_INCLUDES})
 
 target_link_libraries(test_ip_filter gtest gtest_main)
 
