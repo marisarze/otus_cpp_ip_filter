@@ -17,32 +17,30 @@ jobs:
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
       - run: cmake --build . --target ip_filter_cli 
       - run: cmake --build . --target test_ip_filter
-      - run: ls -aq
-      - run: ls -aq tests
       - run: cat tests/ips_long.tsv | ./ip_filter_cli | md5sum
       - run: tests/test_ip_filter
       - run: cpack
       - run: dpkg -c ip_filter-0.0.${{ github.run_number }}-Linux.deb
-      # - name: Create Release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: ${{ github.run_number }}
-      #     release_name: Release ${{ github.run_number }}
-      #     draft: false
-      #     prerelease: false
-      # - name: Upload Release Asset
-      #   id: upload-release-asset
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./ip_filter-0.0.${{ github.run_number }}-Linux.deb
-      #     asset_name: ip_filter-0.0.${{ github.run_number }}-Linux.deb
-      #     asset_content_type: application/vnd.debian.binary-package
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./ip_filter-0.0.${{ github.run_number }}-Linux.deb
+          asset_name: ip_filter-0.0.${{ github.run_number }}-Linux.deb
+          asset_content_type: application/vnd.debian.binary-package
   
   build_on_windows:
     runs-on: windows-latest
@@ -54,6 +52,4 @@ jobs:
       - run: cmake --build .
       - run: cmake --build . --target test_ip_filter
       - run: cmake --build . --target ip_filter_cli
-      - run: dir
-      - run: dir tests
       - run: Start-Process -FilePath tests/Debug/test_ip_filter.exe -Wait -NoNewWindow
