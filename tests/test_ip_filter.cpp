@@ -34,30 +34,35 @@ TEST(TestSimple, TestGetIpPool){
 }
 
 
+TEST(TestSimple, TestShowIpPool){
 
-// TEST(TestSimple, TestEquality){
+    std::vector <std::vector<std::string>> input_pool = 
+    {
+        {"10", "10", "10", "10"},
+        {"1", "2", "3", "4"},
+        {"1", "3", "1"},
+        {"4", "8", "15", "16"},
+        {"23", "42", "4", "8"},
+        {"15", "16", "23", "42"},
+        {{"656"}},
+        {"1", "2", "3", "4"}
+    };
 
-//     std::stringstream buffer;
-//     std::string data = 
-//     "1.1.1.1\t234\t45\n"
-//     "1.1.1.1\t1.1.1.1\t45\n"
-//     "1.1.1.1\t234\t1.1.1.1\n"
-//     "1.1.1.1\t\t45\n"
-//     "1.1.1.1\t234\t\n"
-//     "2.2.2.2\t234\t45\n"
-//     "9.9.9.9\t234\t45\n"
-//     "0.0.0.0\t234\t.\n";
-//     buffer << data;
-//     std::streambuf *sbuf = std::cout.rdbuf();
-//     std::cout.rdbuf(buffer.rdbuf());
-//     converter.show_config_info();
-//     std::string result = buffer.str();
-//     std::cout.rdbuf(sbuf);
-//     std::string expected = "search engine name: FastestSearchEngine\n"
-//             "search engine version: 0.9999\n";
-//     ASSERT_EQ(result, expected);
+    std::string expected = 
+        "10.10.10.10\n"
+        "1.2.3.4\n"
+        "1.3.1\n"
+        "4.8.15.16\n"
+        "23.42.4.8\n"
+        "15.16.23.42\n"
+        "656\n"
+        "1.2.3.4\n";
 
-//     int expected = 1;
-//     int result = 1;
-//     EXPECT_EQ(result, expected);
-// }
+    auto backup = std::cout.rdbuf();
+    std::istringstream buffer;
+    std::cout.rdbuf(buffer.rdbuf());
+    show_ip_pool(input_pool);
+    auto result = buffer.str();
+    std::cout.rdbuf(backup);
+    EXPECT_EQ(result, expected);
+}

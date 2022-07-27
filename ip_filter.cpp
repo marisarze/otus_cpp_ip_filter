@@ -38,7 +38,8 @@ std::vector<std::vector<std::string>> get_ip_pool(std::istream &input)
 }
 
 
-void show_ip_pool(std::vector <std::vector <std::string>> &ip_pool){
+void show_ip_pool(std::vector <std::vector <std::string>> &ip_pool)
+{
     for(auto ip = ip_pool.begin(); ip != ip_pool.end(); ++ip)
     {
         for(auto ip_part = ip->begin(); ip_part != ip->end(); ++ip_part)
@@ -54,7 +55,8 @@ void show_ip_pool(std::vector <std::vector <std::string>> &ip_pool){
 }
 
 
-std::vector <std::vector <std::string>> reverse_sort(std::vector <std::vector <std::string>> ip_pool){
+std::vector <std::vector <std::string>> reverse_sort(std::vector <std::vector <std::string>> ip_pool)
+{
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
     for (int i=3;i>=0;i--){
@@ -72,7 +74,8 @@ std::vector <std::vector <std::string>> reverse_sort(std::vector <std::vector <s
 }
 
 
-std::vector <std::vector <std::string>> filter_by_condition(std::vector <std::vector <std::string>> ip_pool, bool condition_func(std::vector<std::vector <std::string>>::iterator)){
+std::vector <std::vector <std::string>> filter_by_condition(std::vector <std::vector <std::string>> ip_pool, bool condition_func(std::vector<std::vector <std::string>>::iterator))
+{
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
     std::vector <std::vector <std::string>> result; 
