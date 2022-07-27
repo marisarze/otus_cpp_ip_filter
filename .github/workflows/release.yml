@@ -17,7 +17,7 @@ jobs:
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
       - run: cmake --build . --target ip_filter_cli 
       - run: cmake --build . --target test_ip_filter
-      - run: cat tests/ips_long.tsv | ./ip_filter_cli | md5sum
+      - run: cat tests/ips_long.tsv | ./ip_filter_cli
       - run: tests/test_ip_filter
       - run: cpack
       - run: dpkg -c ip_filter-0.0.${{ github.run_number }}-Linux.deb
@@ -41,15 +41,3 @@ jobs:
           asset_path: ./ip_filter-0.0.${{ github.run_number }}-Linux.deb
           asset_name: ip_filter-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
-  
-  build_on_windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-      - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
-      - run: cmake --build .
-      - run: cmake --build . --target test_ip_filter
-      - run: cmake --build . --target ip_filter_cli
-      - run: Start-Process -FilePath tests/Debug/test_ip_filter.exe -Wait -NoNewWindow

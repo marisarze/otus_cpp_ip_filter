@@ -6,7 +6,6 @@ int main(int argc, char const *argv[])
     try
     {
         auto ip_pool = get_ip_pool(std::cin);
-        //show_ip_pool(ip_pool);
 
         auto new_pool = reverse_sort(ip_pool);
         show_ip_pool(new_pool);
