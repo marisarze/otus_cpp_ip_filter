@@ -59,7 +59,7 @@ TEST(TestSimple, TestShowIpPool){
         "1.2.3.4\n";
 
     auto backup = std::cout.rdbuf();
-    std::istringstream buffer;
+    std::stringstream buffer;
     std::cout.rdbuf(buffer.rdbuf());
     show_ip_pool(input_pool);
     auto result = buffer.str();
