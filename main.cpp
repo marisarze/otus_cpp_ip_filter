@@ -1,8 +1,12 @@
 #include "ip_filter.h"
 #include <iostream>
 
-int main()
+#define UNUSED(variable) (void)variable
+
+int main(int argc, char const *argv[])
 {
+    UNUSED(argc);
+    UNUSED(argv);
     try
     {
         auto ip_pool = get_ip_pool(std::cin);
