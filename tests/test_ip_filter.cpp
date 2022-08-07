@@ -18,7 +18,7 @@ TEST(TestSimple, TestGetIpPool){
     auto backup = std::cin.rdbuf();
     std::cin.rdbuf(data.rdbuf());
     auto result = get_ip_pool(std::cin);
-    decltype(result) expected = {
+    std::vector<std::vector<uint8_t>> expected = {
         {1, 1, 1, 1},
         {1, 2, 1, 1},
         {1, 1, 3, 1},
