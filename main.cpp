@@ -7,7 +7,7 @@ int main()
     {
         auto ip_pool = get_ip_pool(std::cin);
         auto new_pool = ip_pool;
-        auto new_pool = reverse_sort(new_pool);
+        new_pool = reverse_sort(new_pool);
         show_ip_pool(new_pool);
 
         const std::vector <uint8_t> some_val;
