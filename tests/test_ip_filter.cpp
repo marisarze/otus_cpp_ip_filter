@@ -25,7 +25,7 @@ TEST(TestSimple, TestGetIpPool){
         {1, 1, 1, 4},
         {1, 1, 1, 1},
         {2, 2, 2, 2},
-        {{99}},
+        {99},
         {1, 2, 3, 4}
     };
     std::cin.rdbuf(backup);
@@ -43,7 +43,7 @@ TEST(TestSimple, TestShowIpPool){
         {4, 8, 15, 16},
         {23, 42, 4, 8},
         {15, 16, 23, 42},
-        {{65}},
+        {65},
         {1, 2, 3, 4}
     };
 
