@@ -26,7 +26,7 @@ std::vector<std::string> split(const std::string &str, char d)
 std::vector<uint8_t> to_uint8(const std::vector <std::string>& input){
     std::vector<uint8_t> result;
     for (auto& elem:input){
-        result.emplace_back(std::stoi(elem));
+        result.emplace_back((uint8_t)std::stoi(elem));
     }
     return result;
 }
