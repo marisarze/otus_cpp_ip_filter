@@ -63,7 +63,6 @@ void show_ip_pool(const std::vector <std::vector <uint8_t>>& ip_pool)
         }
         std::cout << std::endl;
     }
-    std::cout << std::endl;
 }
 
 
