@@ -17,8 +17,8 @@ jobs:
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
       - run: cmake --build . --target ip_filter_cli 
       - run: cmake --build . --target test_ip_filter
-      - run: cat ip_filter.tsv | ip_filter
-      - run: cat ip_filter.tsv | ip_filter | md5sum
+      - run: cat ip_filter.tsv | ./ip_filter
+      - run: cat ip_filter.tsv | ./ip_filter | md5sum
       - run: tests/test_ip_filter
       - run: cpack
       - run: dpkg -c ip_filter-0.0.${{ github.run_number }}-Linux.deb
