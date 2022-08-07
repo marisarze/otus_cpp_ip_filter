@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <algorithm>
 #include "ip_filter.h"
 
 std::vector<std::string> split(const std::string &str, char d)
@@ -22,9 +23,18 @@ std::vector<std::string> split(const std::string &str, char d)
 }
 
 
-std::vector<std::vector<std::string>> get_ip_pool(std::istream &input)
+std::vector<int> to_uint8(const std::vector <std::string>& input){
+    std::vector<int> result;
+    for (auto& elem:input){
+        result.emplace_back(std::stoi(elem));
+    }
+    return result;
+}
+
+
+std::vector<std::vector<int>> get_ip_pool(std::istream &input)
 {
-    std::vector<std::vector<std::string>> ip_pool;
+    std::vector<std::vector<int>> ip_pool;
     std::string line;
     for(std::string line; std::getline(input, line);)
     {   
@@ -32,13 +42,14 @@ std::vector<std::vector<std::string>> get_ip_pool(std::istream &input)
             break;
         }
         auto v = split(line, '\t');
-        ip_pool.push_back(split(v.at(0), '.'));
+        auto temp = split(v.at(0), '.');
+        ip_pool.emplace_back(to_uint8(temp));
     }
     return ip_pool;
 }
 
 
-void show_ip_pool(std::vector <std::vector <std::string>> &ip_pool)
+void show_ip_pool(const std::vector <std::vector <int>>& ip_pool)
 {
     for(auto ip = ip_pool.begin(); ip != ip_pool.end(); ++ip)
     {
@@ -55,17 +66,17 @@ void show_ip_pool(std::vector <std::vector <std::string>> &ip_pool)
 }
 
 
-std::vector <std::vector <std::string>> reverse_sort(std::vector <std::vector <std::string>> ip_pool)
+std::vector <std::vector <int>> reverse_sort(std::vector <std::vector <int>>& ip_pool)
 {
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
-    for (int i=3;i>=0;i--){
-        for(auto ip1 = first; ip1 != last; ++ip1)
+    for (int i=0;i<4;i++){
+        for(auto it1 = first; it1 != last; ++it1)
         {
-            for(auto ip2 = first; ip2 != last-(ip1-first)-1; ++ip2)
+            for(auto it2 = first; it2 != last-(it1-first)-1; ++it2)
             {
-                if (std::stoi((*ip2)[i]) < std::stoi((*(ip2+1))[i])){
-                    std::iter_swap(ip2, ip2+1);
+                if ((*it2)[i] < (*(it2+1))[i]){
+                    std::iter_swap(it2, it2+1);
                 }
             }
         }
@@ -74,15 +85,15 @@ std::vector <std::vector <std::string>> reverse_sort(std::vector <std::vector <s
 }
 
 
-std::vector <std::vector <std::string>> filter_by_condition(std::vector <std::vector <std::string>> ip_pool, bool condition_func(std::vector<std::vector <std::string>>::iterator))
+std::vector <std::vector <int>> filter_by_condition(const std::vector <std::vector <int>>& ip_pool, bool condition_func(const std::vector <int>&))
 {
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
-    std::vector <std::vector <std::string>> result; 
-    for(auto ip = first; ip != last; ++ip)
+    std::vector <std::vector <int>> result; 
+    for(auto it = first; it != last; ++it)
     {
-        if (condition_func(ip)){
-            result.push_back(*ip);
+        if (condition_func(*it)){
+            result.emplace_back(*it);
         }
     }
     return result;

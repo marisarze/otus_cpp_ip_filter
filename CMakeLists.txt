@@ -11,7 +11,7 @@ add_executable(ip_filter_cli main.cpp ip_filter.cpp)
 
 set_target_properties(ip_filter_cli
     PROPERTIES
-    CXX_STANDARD 14
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )
 target_include_directories(ip_filter_cli

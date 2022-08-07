@@ -10,19 +10,19 @@ int main()
         auto new_pool = reverse_sort(ip_pool);
         show_ip_pool(new_pool);
 
-        std::vector<std::vector <std::string>>::iterator some_it;
+        const std::vector <int> some_val;
 
-        auto condition_func1 = [](decltype(some_it) it)-> bool {return (*it)[0]=="1";};
+        auto condition_func1 = [](decltype(some_val)& input)-> bool {return input[0]==1;};
         new_pool = filter_by_condition(ip_pool, condition_func1);
         show_ip_pool(new_pool);
 
-        auto condition_func2 = [](decltype(some_it) it)-> bool {return (*it)[0]=="46" && (*it)[1]=="70";};
+        auto condition_func2 = [](decltype(some_val)& input)-> bool {return input[0]==46 && input[1]==70;};
         new_pool = filter_by_condition(ip_pool, condition_func2);
         show_ip_pool(new_pool);
 
-        auto condition_func3 = [](decltype(some_it) it)-> bool {
+        auto condition_func3 = [](decltype(some_val)& input)-> bool {
             for (int i=0;i<4;i++){
-                if ((*it)[i]=="46") return true;
+                if ((input)[i]==46) return true;
             }
             return false;
         };
