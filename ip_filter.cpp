@@ -23,8 +23,8 @@ std::vector<std::string> split(const std::string &str, char d)
 }
 
 
-std::vector<int> to_uint8(const std::vector <std::string>& input){
-    std::vector<int> result;
+std::vector<uint8_t> to_uint8(const std::vector <std::string>& input){
+    std::vector<uint8_t> result;
     for (auto& elem:input){
         result.emplace_back(std::stoi(elem));
     }
@@ -32,9 +32,9 @@ std::vector<int> to_uint8(const std::vector <std::string>& input){
 }
 
 
-std::vector<std::vector<int>> get_ip_pool(std::istream &input)
+std::vector<std::vector<uint8_t>> get_ip_pool(std::istream &input)
 {
-    std::vector<std::vector<int>> ip_pool;
+    std::vector<std::vector<uint8_t>> ip_pool;
     std::string line;
     for(std::string line; std::getline(input, line);)
     {   
@@ -49,7 +49,7 @@ std::vector<std::vector<int>> get_ip_pool(std::istream &input)
 }
 
 
-void show_ip_pool(const std::vector <std::vector <int>>& ip_pool)
+void show_ip_pool(const std::vector <std::vector <uint8_t>>& ip_pool)
 {
     for(auto ip = ip_pool.begin(); ip != ip_pool.end(); ++ip)
     {
@@ -66,7 +66,7 @@ void show_ip_pool(const std::vector <std::vector <int>>& ip_pool)
 }
 
 
-std::vector <std::vector <int>> reverse_sort(std::vector <std::vector <int>>& ip_pool)
+std::vector <std::vector <uint8_t>> reverse_sort(std::vector <std::vector <uint8_t>>& ip_pool)
 {
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
@@ -85,11 +85,11 @@ std::vector <std::vector <int>> reverse_sort(std::vector <std::vector <int>>& ip
 }
 
 
-std::vector <std::vector <int>> filter_by_condition(const std::vector <std::vector <int>>& ip_pool, bool condition_func(const std::vector <int>&))
+std::vector <std::vector <uint8_t>> filter_by_condition(const std::vector <std::vector <uint8_t>>& ip_pool, bool condition_func(const std::vector <uint8_t>&))
 {
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
-    std::vector <std::vector <int>> result; 
+    std::vector <std::vector <uint8_t>> result; 
     for(auto it = first; it != last; ++it)
     {
         if (condition_func(*it)){

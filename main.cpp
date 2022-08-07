@@ -10,7 +10,7 @@ int main()
         auto new_pool = reverse_sort(ip_pool);
         show_ip_pool(new_pool);
 
-        const std::vector <int> some_val;
+        const std::vector <uint8_t> some_val;
 
         auto condition_func1 = [](decltype(some_val)& input)-> bool {return input[0]==1;};
         new_pool = filter_by_condition(ip_pool, condition_func1);
