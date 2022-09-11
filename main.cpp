@@ -28,6 +28,7 @@ int main()
         };
         filtered_pool = filter_by_condition(new_pool, condition_func3);
         show_ip_pool(filtered_pool);
+        std::cout << std::endl;
         
     }
     catch(const std::exception &e)
