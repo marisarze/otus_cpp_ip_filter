@@ -13,11 +13,11 @@ int main()
         const std::vector <uint8_t> some_val;
 
         auto condition_func1 = [](decltype(some_val)& input)-> bool {return input[0]==1;};
-        new_pool = filter_by_condition(ip_pool, condition_func1);
+        new_pool = filter_by_condition(new_pool, condition_func1);
         show_ip_pool(new_pool);
 
         auto condition_func2 = [](decltype(some_val)& input)-> bool {return input[0]==46 && input[1]==70;};
-        new_pool = filter_by_condition(ip_pool, condition_func2);
+        new_pool = filter_by_condition(new_pool, condition_func2);
         show_ip_pool(new_pool);
 
         auto condition_func3 = [](decltype(some_val)& input)-> bool {
@@ -26,7 +26,7 @@ int main()
             }
             return false;
         };
-        new_pool = filter_by_condition(ip_pool, condition_func3);
+        new_pool = filter_by_condition(new_pool, condition_func3);
         show_ip_pool(new_pool);
         
     }
