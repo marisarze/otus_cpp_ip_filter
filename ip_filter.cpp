@@ -70,12 +70,14 @@ std::vector <std::vector <uint8_t>> reverse_sort(std::vector <std::vector <uint8
 {
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
-    for (int i=3;i>=0;i--){
+    for (int i=0;i<4;i++){
         for(auto it1 = first; it1 != last; ++it1)
         {
             for(auto it2 = first; it2 != last-(it1-first)-1; ++it2)
             {
-                if ((*it2)[i] < (*(it2+1))[i]){
+                bool previous_byte_equal = true;
+                if (i>0) previous_byte_equal = (*it2)[i-1] == (*(it2+1))[i-1]; 
+                if ((*it2)[i] < (*(it2+1))[i] && previous_byte_equal){
                     std::iter_swap(it2, it2+1);
                 }
             }
