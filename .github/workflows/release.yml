@@ -17,7 +17,8 @@ jobs:
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
       - run: cmake --build . --target ip_filter 
       - run: cmake --build . --target test_ip_filter
-      - run: cat ip_filter.tsv | ./ip_filter | echo
+      - run: cat ip_filter.tsv | ./ip_filter > output.txt
+      - run: cat output.txt
       - run: cat ip_filter.tsv | ./ip_filter | md5sum
       - run: tests/test_ip_filter
       - run: cpack
