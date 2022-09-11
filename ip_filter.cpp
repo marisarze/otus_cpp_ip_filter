@@ -70,7 +70,7 @@ std::vector <std::vector <uint8_t>> reverse_sort(std::vector <std::vector <uint8
 {
     auto first = ip_pool.begin();
     auto last =  ip_pool.end();
-    for (int i=0;i<4;i++){
+    for (int i=3;i>=0;i--){
         for(auto it1 = first; it1 != last; ++it1)
         {
             for(auto it2 = first; it2 != last-(it1-first)-1; ++it2)
