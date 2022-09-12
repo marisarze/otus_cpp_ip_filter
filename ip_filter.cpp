@@ -75,9 +75,13 @@ std::vector <std::vector <uint8_t>> reverse_sort(std::vector <std::vector <uint8
         {
             for(auto it2 = first; it2 != last-(it1-first)-1; ++it2)
             {
-                bool previous_byte_equal = true;
-                if (i>0) previous_byte_equal = (*it2)[i-1] == (*(it2+1))[i-1]; 
-                if ((*it2)[i] < (*(it2+1))[i] && previous_byte_equal){
+                bool previous_bytes_equal = true;
+                if (i>0){
+                    for (int j=0;j<i;j++){
+                        previous_bytes_equal = (*it2)[j] == (*(it2+1))[j];
+                    }
+                }  
+                if ((*it2)[i] < (*(it2+1))[i] && previous_bytes_equal){
                     std::iter_swap(it2, it2+1);
                 }
             }
